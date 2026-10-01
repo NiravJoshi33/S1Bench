@@ -1,0 +1,38 @@
+[project]
+name = "s1bench"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "browser-harness==0.1.13",
+    "httpx[http2]>=0.28,<0.29",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# The repo is run, not installed, so tests need the root on sys.path to import s1bench.
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "D"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Test names say what they check; docstrings there would repeat them.
+"tests/**" = ["D"]
+
+[tool.pyright]
+include = ["s1bench", "tests"]
+typeCheckingMode = "standard"
