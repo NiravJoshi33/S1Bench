@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Private working notes for AI agents (CLAUDE.md says to read them first)
+internal/
